@@ -5,7 +5,9 @@ require_once('components/header.php');
 
 
 <main>
-  <em>Enter your account details</em>
+  <div class="info">
+    <em>Enter your account details or sign up</em> <a href="signup">here!</a>
+  </div>
   <form onsubmit="return false">
     <input name="email" type="text" placeholder="email"><br>
     <input name="password" type="password" placeholder="password"><br>

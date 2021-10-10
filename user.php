@@ -12,6 +12,24 @@ require_once('components/header.php');
 ?>
 
 <main>
+
+
+
+  <div class="options">
+    <ul>
+      <li>
+        <a href="logout"> Logout</a>
+      </li>
+      <li>
+        <a href="signup.php">Signup</a>
+      </li>
+      <li>
+        <a href="upload-item.php">Upload items</a>
+      </li>
+
+    </ul>
+  </div>
+
   <h2>
     <?php echo
     ' Hello ' . $_SESSION['user_name'] . '!'    ?>
@@ -34,9 +52,9 @@ require_once('components/header.php');
 
     <h4>Change user information</h4>
 
-    <form action="form_update_user" onsubmit="return false">
-      <label for="password_edit">Password</label>
-      <input type="text" name="password_edit" placeholder="<?php echo $_SESSION['user_password'] ?> "><br>
+    <form id="form_update_user" onsubmit="return false">
+      <label for="password">Password</label>
+      <input type="text" name="password" placeholder="<?php echo $_SESSION['user_password'] ?> "><br>
       <label for="email">Email</label>
       <input type="text" name="email" placeholder="<?php echo $_SESSION['user_email'] ?> "><br>
 
@@ -49,9 +67,6 @@ require_once('components/header.php');
 
 
 
-  <div>
-    <a href="logout"> Logout now</a>
-  </div>
 
 </main>
 

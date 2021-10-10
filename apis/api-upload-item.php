@@ -19,7 +19,11 @@ if (strlen($_POST['item_name']) > _ITEM_MAX_LEN) {
     exit();
 }
 
-$db = _db();
+try {
+    $db = _db();
+} catch (Exception $ex) {
+    _res(500, ['info' => 'system under maintainance', 'error' => __LINE__]);
+}
 
 try {
     $item_id = bin2hex(random_bytes(16));

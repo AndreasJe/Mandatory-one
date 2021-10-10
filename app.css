@@ -14,6 +14,7 @@ main {
 div#items div.item {
   display: grid;
   grid-template-columns: 100fr 100fr 100fr;
+  text-align: center;
 }
 
 h1 {
@@ -32,8 +33,14 @@ h1 {
   text-align: left;
 }
 
-em {
-  margin: 1rem;
+.info {
+  padding: 1rem;
+}
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 nav {
@@ -84,6 +91,7 @@ label {
 }
 
 .right {
+  text-align: right;
   display: flex;
   justify-content: flex-end;
   width: 50%;

@@ -20,9 +20,6 @@
     <h1><?= $_title ?? 'COMPANY' ?></h1>
   </div>
 
-  <div class="right">
-    <a href="signup.php">Signup</a>
-    <a href="login.php">Login</a>
   </div>
 
 </nav>

@@ -5,6 +5,10 @@ if (!isset($_SESSION['user_name'])) {
     exit();
 }
 ?>
+<?php
+$_title = 'Upload item';
+require_once('components/header.php');
+?>
 
 
 <!DOCTYPE html>
@@ -20,11 +24,12 @@ if (!isset($_SESSION['user_name'])) {
 </head>
 
 <body>
-
-    <form onsubmit="validate(upload_item); return false">
-        <input name="item_name" type="text" data-validate="str" data-min="2" data-max="20">
-        <button>Upload item</button>
-    </form>
+    <div class="form_container">
+        <form onsubmit="validate(upload_item); return false">
+            <input name="item_name" type="text" data-validate="str" data-min="2" data-max="20"><br>
+            <button>Upload item</button>
+        </form>
+    </div>
 
     <div id="items"></div>
 
@@ -32,6 +37,7 @@ if (!isset($_SESSION['user_name'])) {
     <script>
         async function upload_item() {
             const form = event.target
+            var length = 22
             const item_name = _one("input[name='item_name']", form).value
             const conn = await fetch("apis/api-upload-item", {
                 method: "POST",
@@ -39,19 +45,21 @@ if (!isset($_SESSION['user_name'])) {
             })
             const res = await conn.text()
             console.log(res)
+            var trimmedString = res.substring(0, length)
             if (conn.ok) {
                 _one("#items").insertAdjacentHTML('afterbegin', `
         <div class="item">
-          <div>${res}</div>
+          <div>${trimmedString}</div>
           <div>${item_name}</div>
           <div>
-          <button onsubmit="return false" onclick=window.location.href='apis/api-delete-item.php?id=${res}'> 🗑️</button>
+          <button onsubmit="return false" onclick=window.location.href='apis/api-delete-item.php?id=${trimmedString}'> 🗑️</button>
           </div>
         </div>`)
             }
             _one("input[name='item_name']", form).value = ""
         }
     </script>
+
 
 </body>
 
