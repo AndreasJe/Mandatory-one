@@ -37,6 +37,8 @@ require_once('components/header.php');
     <script>
         async function upload_item() {
             const form = event.target
+            // Had to use a fixed length, because the ID was longer when applied to the URL, then it was in the database. 
+            // Absolutely no clue why, but the logical solution (trimmedString) works fine.
             var length = 22
             const item_name = _one("input[name='item_name']", form).value
             const conn = await fetch("apis/api-upload-item", {
@@ -52,7 +54,7 @@ require_once('components/header.php');
           <div>${trimmedString}</div>
           <div>${item_name}</div>
           <div>
-          <button onsubmit="return false" onclick=window.location.href='apis/api-delete-item.php?id=${trimmedString}'> 🗑️</button>
+          <button class="fix" onsubmit="return false" onclick=window.location.href='apis/api-delete-item.php?id=${trimmedString}'> 🗑️</button>
           </div>
         </div>`)
             }

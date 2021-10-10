@@ -79,10 +79,16 @@ form {
 
 button {
   float: none;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.fix {
+  margin: 0;
 }
 
 input {
+  margin: 1px;
   float: right;
 }
 

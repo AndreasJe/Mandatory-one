@@ -1,20 +1,21 @@
 <?php
-
+session_start();
 require_once('globals.php');
 
+
+// Seperating the first database check
 try {
     $db = _db();
 } catch (Exception $ex) {
     _res(500, ['info' => 'system under maintainance', 'error' => __LINE__]);
 }
 
-
+// Trying to do something here.....
 try {
     // Get ID from URL
-    $id =  $_SESSION['id'];
-    $email = $_POST['user_email'];
-    $pass = $_POST['user_password'];
-
+    $id = $_SESSION['user_id'];
+    $email = $_POST['email'];
+    $pass = $_POST['password'];
 
     //SQL Statement - refers to user with Variables ":id"
     $q = $db->prepare('UPDATE users SET user_password = :user_password WHERE id = :id');
