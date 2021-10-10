@@ -53,10 +53,10 @@ require_once('components/header.php');
     <h4>Change user information</h4>
 
     <form id="form_update_user" onsubmit="return false">
-      <label for="password">Password</label>
-      <input type="text" name="password" placeholder="<?php echo $_SESSION['user_password'] ?> "><br>
-      <label for="email">Email</label>
-      <input type="text" name="email" placeholder="<?php echo $_SESSION['user_email'] ?> "><br>
+      <label for="new_password">Password</label>
+      <input type="text" name="new_password" placeholder="<?php echo $_SESSION['user_password'] ?> "><br>
+      <label for="new_email">Email</label>
+      <input type="text" name="new_email" placeholder="<?php echo $_SESSION['user_email'] ?> "><br>
 
       <button onclick="update()">Update</button>
 

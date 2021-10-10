@@ -10,10 +10,10 @@ try {
 
 
 try {
-    // Get ID from URL
+    // Get ID from URL  
     $id = $_GET['id'];
     //SQL Statement - refers to user with Variables ":id"
-    $q = $db->prepare('DELETE FROM items WHERE id = :id');
+    $q = $db->prepare('DELETE FROM items WHERE item_id = :id');
     //Replace placeholder ID with URL ID
     $q->bindValue(':id', $id);
     // Executing the change
@@ -23,3 +23,4 @@ try {
     echo '{"info":"Speak to an adult!"}';
     exit();
 }
+header('Location: ' . $_SERVER['HTTP_REFERER']);

@@ -2,6 +2,7 @@
 require_once('globals.php');
 // TODO: Make sure the user is logged
 
+
 // Validate
 if (!isset($_POST['item_name'])) {
     http_response_code(400);
