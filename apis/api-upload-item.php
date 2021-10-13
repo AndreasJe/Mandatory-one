@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('globals.php');
 // TODO: Make sure the user is logged
 
@@ -27,7 +28,10 @@ try {
 }
 
 try {
-    $item_id = bin2hex(random_bytes(16));
+    $item_id = bin2hex(random_bytes(22));
+    $item_name = $_POST['item_name'];
+    move_uploaded_file($_FILES['image']['tmp_name'], "../uploads/img_"  . $item_id);
+
     $q = $db->prepare('INSERT INTO items VALUES(:item_id, :item_name)');
     $q->bindValue(':item_id',  $item_id);
     $q->bindValue(':item_name', $_POST['item_name']);

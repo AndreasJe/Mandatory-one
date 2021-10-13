@@ -10,59 +10,59 @@ $_title = 'Upload item';
 require_once('components/header.php');
 ?>
 
+<div class="form_container">
+    <form onsubmit="validate(upload_item); return false">
+        <label for="item_name">Name:</label>
+        <input name="item_name" type="text" data-validate="str" data-min="2" data-max="20"><br>
 
-<!DOCTYPE html>
-<html lang="en">
+        <input type="file" name="image"><br>
+        <button>Upload item</button>
+    </form>
+</div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="app.css">
-    <title>Document</title>
-    <script src="validator.js"></script>
-</head>
+<div>
+    <img src="http://localhost/uploads/img_ab7fd9a6f43c9fff8df4ab97c77c61a7c901be1c80ab" alt="">
+</div>
 
-<body>
-    <div class="form_container">
-        <form onsubmit="validate(upload_item); return false">
-            <input name="item_name" type="text" data-validate="str" data-min="2" data-max="20"><br>
-            <button>Upload item</button>
-        </form>
-    </div>
-
-    <div id="items"></div>
+<div id="items"></div>
 
 
-    <script>
-        async function upload_item() {
-            const form = event.target
-            // Had to use a fixed length, because the ID was longer when applied to the URL, then it was in the database. 
-            // Absolutely no clue why, but the logical solution (trimmedString) works fine.
-            var length = 22
-            const item_name = _one("input[name='item_name']", form).value
-            const conn = await fetch("apis/api-upload-item", {
-                method: "POST",
-                body: new FormData(form)
-            })
-            const res = await conn.text()
-            console.log(res)
-            var trimmedString = res.substring(0, length)
-            if (conn.ok) {
-                _one("#items").insertAdjacentHTML('afterbegin', `
+<script>
+    async function upload_item() {
+        const form = event.target
+        var length = 22
+        const item_name = _one("input[name='item_name']", form).value
+        const conn = await fetch("apis/api-upload-item", {
+            method: "POST",
+            body: new FormData(form)
+        })
+        const res = await conn.text();
+        console.log(res);
+        var trimmedString = res.substring(0, length)
+        if (conn.ok) {
+            _one("#items").insertAdjacentHTML('afterbegin', `
         <div class="item">
-          <div>${trimmedString}</div>
-          <div>${item_name}</div>
           <div>
-          <button class="fix" onsubmit="return false" onclick=window.location.href='apis/api-delete-item.php?id=${trimmedString}'> 🗑️</button>
+          <h4>
+          ID: </h4>${trimmedString}</div>
+          <div><h4>
+          Name: </h4> ${item_name}</div>
+          <div><h4>
+          Image URL: </h4> <a href="/uploads/img_${res}" >Click to see img</a>
+          </div>
+          <div><h4>
+          Delete: </h4>
+<input type="button" onsubmit="return false" value="🗑️" onclick=window.location.href='apis/api-delete-item.php?item_id=${trimmedString}'>
           </div>
         </div>`)
-            }
-            _one("input[name='item_name']", form).value = ""
         }
-    </script>
+    }
+</script>
 
 
-</body>
 
-</html>
+
+<?php
+$_title = 'Upload item';
+require_once('components/footer.php');
+?>

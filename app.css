@@ -13,7 +13,7 @@ main {
 
 div#items div.item {
   display: grid;
-  grid-template-columns: 100fr 100fr 100fr;
+  grid-template-columns: 80fr 80fr 50fr 10fr;
   text-align: center;
 }
 
@@ -101,6 +101,14 @@ label {
   display: flex;
   justify-content: flex-end;
   width: 50%;
+}
+
+pre {
+  font-size: 0.8rem;
+  text-align: left;
+  font-weight: 800;
+  justify-content: center;
+  display: flex;
 }
 
 footer {
