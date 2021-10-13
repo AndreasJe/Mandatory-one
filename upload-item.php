@@ -30,15 +30,15 @@ require_once('components/header.php');
 <script>
     async function upload_item() {
         const form = event.target
-        var length = 22
         const item_name = _one("input[name='item_name']", form).value
         const conn = await fetch("apis/api-upload-item", {
             method: "POST",
             body: new FormData(form)
         })
         const res = await conn.text();
+        let length = 22
+        let trimmedString = res.substring(0, length)
         console.log(res);
-        var trimmedString = res.substring(0, length)
         if (conn.ok) {
             _one("#items").insertAdjacentHTML('afterbegin', `
         <div class="item">
@@ -51,12 +51,31 @@ require_once('components/header.php');
           Image URL: </h4> <a href="/uploads/img_${res}" >Click to see img</a>
           </div>
           <div><h4>
-          Delete: </h4>
-<input type="button" onsubmit="return false" value="🗑️" onclick=window.location.href='apis/api-delete-item.php?item_id=${trimmedString}'>
+          Delete: </h4><input type="button" onsubmit="return false" value="🗑️" onclick=window.location.href='apis/api-delete-item.php?item_id=${trimmedString}'>
           </div>
         </div>`)
         }
     }
+
+
+    // THE ABOVE DELETE METHOD WORKS, BUT IT REDIRECTS HE PAGE - CANT FIND A WAY AROUND IT.
+    // THE BELOW CODE IS MY ATTEMPT AT A FUNCTION, BUT TRIMMEDSTRING DOES NOT MOVE FROM UPLOAD_ITEM() TO DELETE_ITEM()
+    // 
+    // BUTTON:
+    //<input type="button" onsubmit="return false" value="🗑️" onclick="delete_item()">
+    //
+    // AND SCRIPT:
+    // async function delete_item() {
+    //     let conn = await fetch("apis/api-delete-item.php?item_id=" + trimmedString, {
+    //         method: "POST",
+    //     })
+
+    //     let res = await conn
+    //     console.log(res)
+    //     if (conn.ok) {
+    //         return false;
+    //     }
+    // }
 </script>
 
 
