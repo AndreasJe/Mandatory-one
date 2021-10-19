@@ -23,25 +23,19 @@ require_once('components/header.php');
 
   <p class="userinfo">
     <?php echo
-    ' Here is your email adress: ' . $_SESSION['user_email'];
-    ?> <br> <?php echo
-            ' Dont forget your password: ' . $_SESSION['user_password'];
-            ?> <br> <?php echo
-                    ' What about that ID? ' . $_SESSION['user_id'];
-                    ?>
+    ' Here is your email adress: <bold>' . $_SESSION['user_email'];
+    ?></bold> <br><br> <?php echo
+                        ' Dont forget your password (this is what i see): <bold>' . $_SESSION['user_password'];
+                        ?></bold> <br><br> <?php echo
+                                            ' What about that ID?<bold> ' . $_SESSION['user_id'];
+                                            ?></bold>
     <br><br>
-    If you want to change this information, you can do so, by using the link below
+    If you want to change this information, you can do so by using the link below
   </p>
 
 
   <div class="options">
     <ul>
-      <li>
-        <a href="logout"> Logout</a>
-      </li>
-      <li>
-        <a href="signup.php">Signup</a>
-      </li>
       <li>
         <a href="upload-item.php">Upload items</a>
       </li>

@@ -24,8 +24,6 @@ require_once('components/header.php');
       body: new FormData(form)
     })
 
-    let res = await conn.json()
-    console.log(res)
     if (conn.ok) {
       location.href = "user"
     }

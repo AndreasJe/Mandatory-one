@@ -8,13 +8,12 @@ require_once('components/header.php');
   <div class="form_container">
     <form id="form_sign_up" onsubmit="return false">
       <input name="name" type="text" placeholder="name"><br>
-      <input name="last_name" type="text" placeholder="last name"><br>
       <input name="email" required="required" type="text" placeholder="email"><br>
       <input name="password" type="text" placeholder="password"><br>
       <button onclick="sign_up()">Signup</button>
     </form>
   </div>
-  <h2 id="feedback"></h2>
+  <div id="feedback"></div>
 
 </main>
 <script>
@@ -25,6 +24,10 @@ require_once('components/header.php');
     })
     let response = await conn.json()
     console.log(response)
+    if (conn.ok) {
+      _one("#feedback").innerHTML = `<p>User has been created. You can now login using your new account</p>
+      <a href="login">Go here to login</a>`
+    }
   }
 </script>
 

@@ -20,6 +20,16 @@
     <h1><?= $_title ?? 'COMPANY' ?></h1>
   </div>
 
+  <div class="right">
+
+    <?php if (isset($_SESSION['user_name'])) { ?> <a href="logout.php">Logout</a>
+    <?php }
+    if (!isset($_SESSION['user_name'])) {
+    } ?>
+
+
+  </div>
+
   </div>
 
 </nav>

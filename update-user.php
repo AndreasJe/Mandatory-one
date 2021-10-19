@@ -14,13 +14,22 @@ require_once('components/header.php');
         <h4>Change user information</h4>
 
         <form id="form_update_user" onsubmit="return false">
-            <label for="new_password">Password</label>
-            <input type="password" name="new_password" placeholder="<?php echo $_SESSION['user_password'] ?> "><br>
-            <label for="new_email">Email</label>
-            <input type="text" name="new_email" placeholder="<?php echo $_SESSION['user_email'] ?> "><br>
+            <div>
+                <label for="new_username">Username</label><br>
+                <input type="text" name="new_username" placeholder="<?php echo $_SESSION['user_name'] ?> ">
+            </div>
+            <div>
+                <label for="new_password">Password</label><br>
+                <input type="password" name="new_password" placeholder="<?php echo $_SESSION['user_password'] ?> ">
+            </div>
+            <div>
+                <label for="new_email">Email</label><br>
+                <input type="text" name="new_email" placeholder="<?php echo $_SESSION['user_email'] ?> ">
+            </div>
+            <div>
+                <button onclick="update()" name="user_dlt">Update</button>
 
-            <button onclick="update()" name="user_dlt">Update</button>
-
+            </div>
             <em>Click the button to confirm the change</em>
         </form>
     </div>
@@ -30,7 +39,7 @@ require_once('components/header.php');
 
 
 
-        <h4>Here is your Session data</h4>
+        <h4>Here is your raw SESSION data</h4>
         <?php
         echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>'; ?>
 
@@ -52,7 +61,9 @@ require_once('components/header.php');
 
 
         let res = await conn
-        if (conn.ok) {}
+        if (conn.ok) {
+            _one("#feedback").innerHTML = "User information has been updated. <br> You can now use the new password"
+        }
 
     }
 </script>

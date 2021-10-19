@@ -1,7 +1,7 @@
 <?php
 
 require_once('globals.php');
-// Validate name
+// Validate username
 if (!isset($_POST['name'])) {
   send_400('name is required');
   $error = "We need your name to create a user for you! Please enter your name in the form";
@@ -15,19 +15,6 @@ if (strlen($_POST['name']) > 22) {
   $error = "Your name must be shorter than " . _PASSWORD_MAX_LEN . " characters";
 }
 
-// Validate last_name
-if (!isset($_POST['last_name'])) {
-  send_400('last_name is required');
-  $error = "We need your last name to create a user for you! Please enter your name in the form";
-}
-if (strlen($_POST['last_name']) < 2) {
-  send_400('last_name min 2 characters');
-  $error = "Your last name has to be more than " . _PASSWORD_MIN_LEN . " characters";
-}
-if (strlen($_POST['last_name']) > 22) {
-  send_400('last_name max 22 characters');
-  $error = "Your last name must be shorter than " . _PASSWORD_MAX_LEN . " characters";
-}
 
 // Validate email
 if (!isset($_POST['email'])) {
@@ -36,7 +23,7 @@ if (!isset($_POST['email'])) {
 }
 if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
   send_400('email is invalid');
-  $error = "We need a valid email to verify your user Please enter your email correctly in the form";
+  $error = "We need a valid email to verify your user. Please enter your email correctly in the form";
 }
 
 try {
@@ -47,15 +34,22 @@ try {
 // Connect to DB
 // include / require
 require_once('db.php');
+
+$password = $_POST['password'];
+$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
 try {
   // Insert data in the DB
-  $q = $db->prepare('INSERT INTO users VALUES(:user_id, :user_name, :user_last_name, :user_email, :user_password)');
+  $q = $db->prepare('INSERT INTO users VALUES(:user_id, :user_name, :user_email, :user_password)');
   $q->bindValue(":user_id", null); // The db will give this automati.
   $q->bindValue(":user_name", $_POST['name']);
-  $q->bindValue(":user_last_name", $_POST['last_name']);
   $q->bindValue(":user_email", $_POST['email']);
-  $q->bindValue(":user_password", $_POST['password']);
+  $q->bindValue(":user_password", $hashed_password);
   $q->execute();
+
+
+
+
   $user_id = $db->lastInsertId();
   // SUCCESS
   header('Content-Type: application/json');
