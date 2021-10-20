@@ -8,12 +8,15 @@ require_once('components/header.php');
   <div class="info">
     <em>Enter your account details or sign up</em> <a href="signup">here!</a>
   </div>
-  <form onsubmit="return false">
+  <form action="apis/api-login.php" onsubmit="return false">
     <input name="email" type="text" placeholder="email"><br>
     <input name="password" type="password" placeholder="password"><br>
     <button onclick="login()">Login</button>
   </form>
 
+  <div id="feedback">
+
+  </div>
 </main>
 <script>
   async function login() {
@@ -25,7 +28,10 @@ require_once('components/header.php');
     })
 
     if (conn.ok) {
-      location.href = "user"
+      location.href = "user.php"
+
+
+
     }
   }
 </script>
