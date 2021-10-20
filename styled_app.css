@@ -73,6 +73,10 @@ footer {
   font-family: "Fjalla One";
 }
 
+#feedback {
+  height: 50px;
+}
+
 .form_container input {
   display: block;
   width: 100%;

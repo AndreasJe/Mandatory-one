@@ -35,7 +35,7 @@ $_title = 'Signup';
               </div>
             </form>
           </div>
-          <div id="feedback"></div>
+          <div class="mt-5" id="feedback"></div>
         </div>
       </div>
     </div>
@@ -50,8 +50,8 @@ $_title = 'Signup';
       let response = await conn.json()
       console.log(response)
       if (conn.ok) {
-        _one("#feedback").innerHTML = `<p>User has been created. You can now login using your new account</p>
-      <a href="login">Go here to login</a>`
+        document.getElementById("feedback").insertAdjacentHTML('afterbegin', `<p>User has been created. You can now login using your new account</p>
+      <a href="login">Go here to login</a>`)
       }
     }
   </script>
