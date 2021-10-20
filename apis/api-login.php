@@ -18,7 +18,7 @@
     $row = $q->fetch();
 
     //Just trying to compare manually in Postman
-    echo 'Original password:' . $_POST['password'] . ' - ';
+    echo 'RAW password:' . $_POST['password'] . ' - ';
     echo 'Hashed password from DB :' . $row['user_password'] . ' - ';
 
 

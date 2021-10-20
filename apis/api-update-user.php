@@ -11,19 +11,36 @@ try {
 
 try {
     $id = $_SESSION['user_id'];
-    $pass = $_POST['new_password'];
+    $currentpass = $_POST['current_password'];
+    $newpass = $_POST['new_password'];
+    $newpasshashed = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
+    $confirmpass = $_POST['confirm_password'];
     //$email = $_POST['new_email'];
 
 
-    $q = $db->prepare('UPDATE users SET user_password = :user_password WHERE user_id = :id');
-    //$q = $db->prepare('UPDATE users SET user_email = :user_email WHERE user_id = :id');
+    $q = $db->prepare('SELECT * FROM users WHERE user_id = :id');
     $q->bindValue(':id', $id);
-    $q->bindValue(':user_password', $pass);
-    //q->bindValue(':user_email', $email);
     $q->execute();
+    $row = $q->fetch();
     echo 'Number of rows updated: ' . $q->rowCount();
+
+
+
+    if (password_verify($currentpass, $row['user_password'])) {
+        // Check if password is same
+        if ($newpass == $confirmpass) {
+            $sql = $db->prepare('UPDATE users SET user_password = :user_password WHERE user_id = :id');
+            $sql->bindValue(':id', $id);
+            $sql->bindValue(':new_password', $newpasshashed);
+            $sql->execute();
+        } else {
+            echo 'Password does not match.';
+        }
+    } else {
+        echo 'Password is not correct.';
+    }
+    exit();
 } catch (PDOException $ex) {
     echo $ex;
     echo 'No dice! ';
-    exit();
 }

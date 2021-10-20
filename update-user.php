@@ -11,29 +11,32 @@ require_once('components/header.php');
 <main>
     <div class="form_container">
 
-        <h4>Change user information</h4>
+        <h4>Change password</h4>
 
         <form id="form_update_user" onsubmit="return false">
             <div>
-                <label for="new_username">Username</label><br>
-                <input type="text" name="new_username" placeholder="<?php echo $_SESSION['user_name'] ?> ">
+                <label for="current_password">Current password</label><br>
+                <input type="password" name="current_password" placeholder="<?php echo $_SESSION['user_password'] ?> ">
             </div>
             <div>
-                <label for="new_password">Password</label><br>
+                <label for="new_password">New password</label><br>
                 <input type="password" name="new_password" placeholder="<?php echo $_SESSION['user_password'] ?> ">
             </div>
             <div>
-                <label for="new_email">Email</label><br>
-                <input type="text" name="new_email" placeholder="<?php echo $_SESSION['user_email'] ?> ">
+                <label for="confirm_password">Confirm password</label><br>
+                <input type="password" name="confirm_password" placeholder="<?php echo $_SESSION['user_password'] ?> ">
             </div>
             <div>
                 <button onclick="update()" name="user_dlt">Update</button>
 
             </div>
-            <em>Click the button to confirm the change</em>
         </form>
     </div>
 
+    <div id="feedback">
+        <em>Click the button to confirm the change</em>
+
+    </div>
 
     <div>
 

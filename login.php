@@ -14,7 +14,7 @@ require_once('components/header.php');
     <button onclick="login()">Login</button>
   </form>
 
-  <div id="feedback">
+  <div id="feed">
 
   </div>
 </main>
@@ -29,8 +29,6 @@ require_once('components/header.php');
 
     if (conn.ok) {
       location.href = "user.php"
-
-
 
     }
   }
