@@ -44,3 +44,6 @@ try {
     echo 'OOPS! i did it again' . __LINE__;
     exit();
 }
+
+
+exit();

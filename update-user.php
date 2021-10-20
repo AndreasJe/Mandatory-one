@@ -4,41 +4,32 @@ if (!isset($_SESSION['user_name'])) {
     header('Location: login');
     exit();
 }
-$_title = 'Update user';
+$_title = 'Edit Profile';
 require_once('components/header.php');
 ?>
 
 <main>
     <div class="form_container">
+        <div class="form_title">
+            <h2>Change password</h2>
+        </div>
 
-        <h4>Change password</h4>
 
         <form id="form_update_user" onsubmit="return false">
-            <div>
-                <label for="current_password">Current password</label><br>
-                <input type="password" name="current_password" placeholder="<?php echo $_SESSION['user_password'] ?> ">
-            </div>
-            <div>
-                <label for="new_password">New password</label><br>
-                <input type="password" name="new_password" placeholder="<?php echo $_SESSION['user_password'] ?> ">
-            </div>
-            <div>
-                <label for="confirm_password">Confirm password</label><br>
-                <input type="password" name="confirm_password" placeholder="<?php echo $_SESSION['user_password'] ?> ">
-            </div>
+            <input type="password" name="current_password" placeholder="Current password ">
+            <input type="password" name="new_password" placeholder="New password ">
+            <input type="password" name="confirm_password" placeholder="Confirm password">
             <div>
                 <button onclick="update()" name="user_dlt">Update</button>
 
             </div>
         </form>
+        <div id="feedback" class="container info">
+            <em class="text-center">Click the button to confirm the change</em>
+        </div>
     </div>
 
-    <div id="feedback">
-        <em>Click the button to confirm the change</em>
-
-    </div>
-
-    <div>
+    <div class="subinfo">
 
 
 
@@ -65,6 +56,7 @@ require_once('components/header.php');
 
         let res = await conn
         if (conn.ok) {
+            _one("#feedback").innerHTML = " "
             _one("#feedback").innerHTML = "User information has been updated. <br> You can now use the new password"
         }
 

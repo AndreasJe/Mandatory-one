@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css?family=Fjalla+One&display=swap");
+
+/* // Upload-item temporary styling */
+
+div#items div.item {
+  display: grid;
+  grid-template-columns: 80fr 80fr 50fr 10fr;
+  text-align: center;
+}
+
+img.product-img {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+}
+
+/* // Definitive styling */
+
+body {
+  background: url(bg.jpg) center center no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  font-family: "Fjalla One" !important;
+  position: relative;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  background: #f8f4e5;
+  border: 2px solid black;
+  box-shadow: 0px 3px 1px #ffa580, 0px 3px 1px 1px black;
+}
+
+nav .nav-link {
+  text-decoration: none;
+  color: black;
+  margin-left: 1rem;
+}
+nav .nav-link:hover {
+  text-decoration: none;
+  color: black;
+}
+
+#user-nav {
+  justify-content: end;
+}
+
+.dropdown-menu.show {
+  left: -82px;
+  border: 2px solid black;
+  background: #f8f4e5;
+  box-shadow: 3px 3px 1px #ffa580, 3px 3px 1px 1px black;
+}
+
+footer {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 1%;
+}
+
+.form_container ::placeholder {
+  font-size: 14pt;
+  line-height: 28pt;
+  font-family: "Fjalla One";
+}
+
+.form_container input {
+  display: block;
+  width: 100%;
+  font-size: 14pt;
+  line-height: 28pt;
+  font-family: "Fjalla One";
+  margin-bottom: 28pt;
+  border: none;
+  border-bottom: 5px solid black;
+  background: #f8f4e5;
+  min-width: 250px;
+  padding-left: 5px;
+  outline: none;
+  color: black;
+  opacity: 1;
+}
+
+.form_container input:focus {
+  border-bottom: 5px solid #f8f4e5;
+  border-bottom: 5px solid #ffa580;
+}
+
+.form_container button {
+  display: block;
+  margin: 0 auto;
+  line-height: 28pt;
+  padding: 0 20px;
+  background: #ffa580;
+  letter-spacing: 2px;
+  transition: 0.2s all ease-in-out;
+  outline: none;
+  border: 1px solid black;
+  box-shadow: 3px 3px 1px #95a4ff, 3px 3px 1px 1px black;
+}
+
+.form_container button:hover {
+  background: rgba(0, 0, 0, 1);
+  color: white;
+  border: 1px solid rgba(0, 0, 0, 1);
+}
+
+::selection {
+  background: #ffc8ff;
+}
+
+.form_container {
+  background: #f8f4e5;
+  padding: 50px 100px;
+  border: 2px solid black;
+  box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px black;
+}
+.form_title {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.form_title h2 {
+  font-size: 2rem;
+}
+
+form {
+  display: block;
+  margin-top: 0em;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border-bottom: 5px solid black;
+  -webkit-text-fill-color: #2a293e;
+  box-shadow: 0 0 0px 1000px #f8f4e5 inset;
+  -webkit-box-shadow: 0 0 0px 1000px #f8f4e5 inset;
+  transition: #f8f4e5 5000s ease-in-out 0s;
+}
+
+@-webkit-keyframes autofill {
+  to {
+    color: #666;
+    background: transparent;
+  }
+}
+
+input:-webkit-autofill {
+  -webkit-animation-name: autofill;
+  -webkit-animation-fill-mode: both;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: "Select file";
+  display: inline-block;
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-size: 14pt;
+  line-height: 28pt;
+  padding-left: 0px;
+  font-weight: 300;
+  font-family: "Fjalla One";
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+.info {
+  margin-top: 28pt;
+  margin-bottom: 28pt;
+  font-size: 10pt;
+  line-height: 28pt;
+  font-family: "Fjalla One";
+}
+
+.info a {
+  font-style: italic;
+  text-decoration: none;
+  color: black;
+}
+
+.subinfo {
+  padding: 2rem;
+  margin-top: 4rem;
+}

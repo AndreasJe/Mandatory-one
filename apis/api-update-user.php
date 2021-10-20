@@ -22,17 +22,18 @@ try {
     $q->bindValue(':id', $id);
     $q->execute();
     $row = $q->fetch();
-    echo 'Number of rows updated: ' . $q->rowCount();
+    echo 'Number of rows found: ' . $q->rowCount();
 
 
 
     if (password_verify($currentpass, $row['user_password'])) {
         // Check if password is same
         if ($newpass == $confirmpass) {
-            $sql = $db->prepare('UPDATE users SET user_password = :user_password WHERE user_id = :id');
-            $sql->bindValue(':id', $id);
-            $sql->bindValue(':new_password', $newpasshashed);
-            $sql->execute();
+            $q2 = $db->prepare('UPDATE users SET user_password = :user_password WHERE user_id = :id');
+            $q2->bindValue(':id', $id);
+            $q2->bindValue(':new_password', $newpasshashed);
+            $q2->execute();
+            echo 'Number of rows changed: ' . $q->rowCount();
         } else {
             echo 'Password does not match.';
         }

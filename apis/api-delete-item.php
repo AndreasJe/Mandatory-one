@@ -19,6 +19,8 @@ try {
     // Executing the change
     $q->execute();
     echo 'Number of rows deleted: ' . $q->rowCount() . "</br>" .  '  User with id:' . $id . ' has been removed';
+    header('Location: ../upload-item.php');
+    exit();
 } catch (PDOException $ex) {
     echo '{"info":"Speak to an adult!"}';
     exit();
