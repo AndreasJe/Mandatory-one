@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= $_title ?? 'COMPANY' ?></title>
   <link rel="stylesheet" href="../styled_app.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="validator.js"></script>
 </head>
 
@@ -15,24 +15,35 @@
 
   <nav class="navbar navbar-light navbar-expand-sm">
     <a class="navbar-brand" href="user.php">
-      <img src="logo.svg" width="30" height="30" alt="logo">
-      AmazonBay
+      <img class="logo" src="logo.svg" width="30" height="30" alt="logo">
+
     </a>
-    <a class="nav-link" href="upload-item.php">
-      Upload Products
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <ul class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Products
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <li><a class="dropdown-item" href="upload-item.php">Upload Products</a></li>
+        <li><a class="dropdown-item disabled" href="#">View Products (W.I.P)</a></li>
+      </ul>
+    </ul>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-list-4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="user-nav">
       <ul class="navbar-nav">
+
+        <li id="nav-username" class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><?php echo
+                                                                                    $_SESSION['user_name']    ?></a>
+        </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="../user.png" width="40" height="40" class="rounded-circle">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="user_img" src="../user-img.svg" width="40" height="40" class="rounded-circle">
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="user.php">Dashboard</a>
-            <a class="dropdown-item" href="update-user.php">Edit Profile</a>
+            <a class="dropdown-item" href="update-user.php">Change Password</a>
             <a class="dropdown-item" href="logout.php">Log Out</a>
           </div>
         </li>

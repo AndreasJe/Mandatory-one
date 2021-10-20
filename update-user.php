@@ -29,17 +29,6 @@ require_once('components/header.php');
         </div>
     </div>
 
-    <div class="subinfo">
-
-
-
-        <h4>Here is your raw SESSION data</h4>
-        <?php
-        echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>'; ?>
-
-
-    </div>
-
 
 </main>
 

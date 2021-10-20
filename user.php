@@ -16,7 +16,7 @@ require_once('components/header.php');
 
 
   <div class="form_container">
-    <h2 class="text-center">
+    <h2 class="text-center mb-5 pb-5">
       <?php echo
       ' Hello ' . $_SESSION['user_name'] . '!'    ?>
 
@@ -32,6 +32,17 @@ require_once('components/header.php');
       <br><br>
       If you want to change this information, you can do so by using the user menu in the top right corner.
     </p>
+
+    <div class="subinfo">
+
+
+
+      <h5>Here is your raw SESSION data:</h5><br>
+      <?php
+      echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>'; ?>
+
+
+    </div>
   </div>
 </main>
 

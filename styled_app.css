@@ -53,7 +53,41 @@ nav .nav-link:hover {
   justify-content: end;
 }
 
+.logo {
+  height: 50px;
+  width: 120px;
+}
+
+.user_img {
+  height: 60px;
+  width: 60px;
+}
+
+#nav-username {
+  align-self: center;
+  font-size: 1.4rem;
+}
+
+nav .dropdown {
+  margin: 0;
+}
+
+nav .nav-link,
+nav .dropdown-item {
+  align-self: center;
+  color: #757575;
+}
+
+nav .nav-link:hover,
+nav .dropdown-item:hover {
+  color: #757575;
+}
 .dropdown-menu.show {
+  border: 2px solid black;
+  background: #f8f4e5;
+}
+
+#user-nav .dropdown-menu.show {
   left: -82px;
   border: 2px solid black;
   background: #f8f4e5;
@@ -64,7 +98,10 @@ footer {
   text-align: center;
   width: 100%;
   position: absolute;
-  bottom: 1%;
+  bottom: 0;
+  background: #f8f4e5;
+  height: 60px;
+  border-top: 2px solid black;
 }
 
 .form_container ::placeholder {
@@ -75,6 +112,7 @@ footer {
 
 #feedback {
   height: 50px;
+  text-align: center;
 }
 
 .form_container input {
@@ -85,12 +123,12 @@ footer {
   font-family: "Fjalla One";
   margin-bottom: 28pt;
   border: none;
-  border-bottom: 5px solid black;
+  border-bottom: 5px solid #757575;
   background: #f8f4e5;
   min-width: 250px;
   padding-left: 5px;
   outline: none;
-  color: black;
+  color: #757575;
   opacity: 1;
 }
 
