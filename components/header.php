@@ -23,8 +23,8 @@
         Products
       </a>
       <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <li><a class="dropdown-item" href="upload-item.php">Upload Products</a></li>
-        <li><a class="dropdown-item disabled" href="#">View Products (W.I.P)</a></li>
+        <li><a class="dropdown-item" href="upload-item.php">Upload Product</a></li>
+        <li><a class="dropdown-item " href="items.php">View Products</a></li>
       </ul>
     </ul>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-list-4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,8 +34,8 @@
       <ul class="navbar-nav">
 
         <li id="nav-username" class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><?php echo
-                                                                                    $_SESSION['user_name']    ?></a>
+          <a class="capital nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><?php echo
+                                                                                            $_SESSION['user_name']    ?></a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

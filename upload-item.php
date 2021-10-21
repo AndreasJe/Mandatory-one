@@ -5,8 +5,11 @@ if (!isset($_SESSION['user_name'])) {
     exit();
 }
 ?>
+
+
+
 <?php
-$_title = 'Upload item';
+$_title = 'Upload Product';
 require_once('components/header.php');
 ?>
 
@@ -20,7 +23,7 @@ require_once('components/header.php');
 </div>
 
 
-<div id="items"></div>
+<div class="invisible" id="items"></div>
 
 
 <script>
@@ -36,11 +39,12 @@ require_once('components/header.php');
         let trimmedString = res.substring(0, length)
         console.log(res);
         if (conn.ok) {
+            document.getElementById("items").style.display = "block";
             _one("#items").insertAdjacentHTML('afterbegin', `
         <div class="item">
           <div>
           <h4>
-          ID: </h4>${trimmedString}</div>
+          ID: </h4>${res}</div>
           <div><h4>
           Name: </h4> ${item_name}</div>
           <div>
@@ -49,10 +53,13 @@ require_once('components/header.php');
           <div>
          
           <input type="button" onsubmit="return false" value="🗑️"
-            onclick="window.location.href='apis/api-delete-item.php?item_id=${trimmedString}'"> </div>
+            onclick="window.location.href='apis/api-delete-item.php?item_id=${res}'"> </div>
         </div>`)
         }
         _one("input[name='item_name']", form).value = ""
+        var element = document.getElementById("items");
+        element.classList.remove("invisible");
+
     }
 </script>
 

@@ -7,7 +7,7 @@ if (!isset($_SESSION['user_name'])) {
 ?>
 
 <?php
-$_title = 'Homepage';
+$_title = 'Dashboard';
 require_once('components/header.php');
 ?>
 
