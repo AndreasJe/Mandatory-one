@@ -12,19 +12,21 @@ if (!isset($_SESSION['user_name'])) {
 $_title = 'Upload Product';
 require_once('components/header.php');
 ?>
+<main>
+    <div class="form_container">
+        <form onsubmit="validate(upload_item); return false">
+            <input placeholder="Name for item" name="item_name" type="text" data-validate="str" data-min="2" data-max="20"><br>
 
-<div class="form_container">
-    <form onsubmit="validate(upload_item); return false">
-        <input placeholder="Name for item" name="item_name" type="text" data-validate="str" data-min="2" data-max="20"><br>
+            <input class="custom-file-input" placeholder="Image of item" type="file" name="image"><br>
+            <button onclick="upload_item()">Upload item</button>
+        </form>
+    </div>
 
-        <input class="custom-file-input" placeholder="Image of item" type="file" name="image"><br>
-        <button onclick="upload_item()">Upload item</button>
-    </form>
-</div>
+    <section>
+        <div class="invisible" id="items"></div>
 
-
-<div class="invisible" id="items"></div>
-
+    </section>
+</main>
 
 <script>
     async function upload_item() {
@@ -57,7 +59,7 @@ require_once('components/header.php');
         </div>`)
         }
         _one("input[name='item_name']", form).value = ""
-        var element = document.getElementById("items");
+        let element = document.getElementById("items");
         element.classList.remove("invisible");
 
     }

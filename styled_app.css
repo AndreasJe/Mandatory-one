@@ -1,9 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Fjalla+One&display=swap");
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+
 /* // Upload-item temporary styling */
 
 div#items {
-  width: 90%;
+  margin-top: 50px;
+  margin-bottom: 50px;
   color: #757575;
   background: #f8f4e5;
   padding: 25px 50px;
@@ -13,7 +19,6 @@ div#items {
 
 div#items div.item {
   display: grid;
-  width: 90%;
   margin: auto;
   grid-template-columns: 40fr 20fr 50fr 5fr;
   text-align: center;
@@ -23,6 +28,25 @@ div#items div.item:not(:first-child) {
   margin-top: 1rem;
   padding-top: 1rem;
   border-top: 2px solid #757575;
+}
+
+section {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 90%;
+  margin: auto;
+}
+
+.styled-section {
+  margin-top: 50px !important;
+  margin-bottom: 50px !important;
+  color: #757575;
+  background: #f8f4e5;
+  padding: 25px 50px;
+  border: 2px solid black;
+  width: 90%;
+  margin: auto;
+  box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px black;
 }
 
 img.product-img {
@@ -39,15 +63,23 @@ img.product-img {
 /* // Definitive styling */
 
 body {
-  background: url(bg.jpg) center center no-repeat;
-  background-size: cover;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  background-color: #fff6af !important;
   width: 100vw;
-  height: 100vh;
+  height: auto;
   display: grid;
   align-items: center;
   justify-items: center;
   font-family: "Fjalla One" !important;
   position: relative;
+}
+main {
+  margin-top: 100px !important;
+  margin-bottom: 100px !important;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
@@ -186,6 +218,8 @@ footer {
   padding: 50px 100px;
   border: 2px solid black;
   box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px black;
+  width: 500px;
+  margin-top: 50px;
 }
 .form_title {
   margin-bottom: 3rem;

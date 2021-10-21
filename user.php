@@ -14,8 +14,7 @@ require_once('components/header.php');
 <main>
 
 
-
-  <div class="form_container">
+  <section class="styled-section">
     <h2 class="text-center mb-5 pb-5">
       <?php echo
       ' Hello ' . $_SESSION['user_name'] . '!'    ?>
@@ -43,7 +42,7 @@ require_once('components/header.php');
 
 
     </div>
-  </div>
+  </section>
 </main>
 
 

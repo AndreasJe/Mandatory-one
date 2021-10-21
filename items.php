@@ -31,13 +31,14 @@ $items = $q->fetchAll(PDO::FETCH_OBJ);
     });
 </script>
 
+<main>
+    <section>
+        <div id="items">
+            <?php
 
-<div id="items">
-    <?php
 
-
-    foreach ($items as $item) {
-        echo '
+            foreach ($items as $item) {
+                echo '
         <div class="item">
           <div>
           <h5>
@@ -52,11 +53,12 @@ $items = $q->fetchAll(PDO::FETCH_OBJ);
           <a class="button m-0 ms-5 d-flex h-100 align-items-center" id="delete" href="apis/api-delete-item.php?item_id=' . $item->item_id .  ' "> 🗑️
             </a> </div>
         </div>';
-    }
-    ?>
+            }
+            ?>
 
-</div>
-
+        </div>
+    </section>
+</main>
 
 
 <?php
