@@ -35,19 +35,18 @@ try {
 $password = $_POST['password'];
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 $verification_key = bin2hex(random_bytes(16));
+$ver = "0";
 
 try {
-  // Insert data in the DB
-  $q = $db->prepare('INSERT INTO users VALUES(:user_id, :user_name, :user_email, :user_password, :verification_key)');
+  // Insert data in the D
+  $q = $db->prepare('INSERT INTO users VALUES(:user_id, :user_name, :user_email, :user_password, :verification_key, :verified)');
   $q->bindValue(":user_id", null); // The db will give this automati.
   $q->bindValue(":user_name", $_POST['name']);
   $q->bindValue(":user_email", $_POST['email']);
   $q->bindValue(":user_password", $hashed_password);
   $q->bindValue(":verification_key", $verification_key);
+  $q->bindValue(":verified", $ver);
   $q->execute();
-
-
-
 
   $user_id = $db->lastInsertId();
   // SUCCESS
@@ -55,6 +54,15 @@ try {
   // echo '{"info":"user created", "user_id":"'.$user_id.'"}';
   $response = ["info" => "user created", "user_id" => intval($user_id)];
   echo json_encode($response);
+
+
+  $name =  $_POST['name'];
+  $_to_email =  $_POST['email'];
+  $_message = "Thank you for signing up! <a href='http://localhost/api-validate-user.php?key=$verification_key'>Click here to verify your account</a>";
+  //$verification_key = bin2hex(random_bytes(16));
+
+
+  require_once(__DIR__ . "/private/send-email.php");
 } catch (Exception $ex) {
   http_response_code(500);
   echo 'Something went wrong';
