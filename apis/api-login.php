@@ -18,7 +18,6 @@ try {
 
 
 
-
   // Does the user exist or not (If it does continue )
   if (!empty($row)) {
     // Verify password input string with hashed password in database row.
@@ -28,6 +27,7 @@ try {
       echo "SUCCESS: Password is valid";
       //Start SESSION and assign values from database
       session_start();
+      $_SESSION['user_verified'] = $row['verified'];
       $_SESSION['user_email'] = $row['user_email'];
       $_SESSION['user_password'] = $row['user_password'];
       $_SESSION['user_name'] = $row['user_name'];
@@ -37,7 +37,8 @@ try {
     }
     // If $row is empty, the user doesn't exist.
   } else {
-    echo "ERROR: This user does not exist";
+    echo "ERROR: User does not exist";
+    exit();
   }
 } catch (Exception $ex) {
   _res(500, ['info' => 'system under maintainance', 'error' => __LINE__]);

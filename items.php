@@ -24,11 +24,11 @@ $items = $q->fetchAll(PDO::FETCH_OBJ);
 ?>
 
 <script>
-    $('a#delete').on('click', function(e) {
-        e.preventDefault();
+$('a#delete').on('click', function(e) {
+    e.preventDefault();
 
 
-    });
+});
 </script>
 
 <main>
@@ -38,21 +38,13 @@ $items = $q->fetchAll(PDO::FETCH_OBJ);
 
 
             foreach ($items as $item) {
-                echo '
-        <div class="item">
-          <div>
-          <h5>
-          ID: </h5><p>' . $item->item_id . '</p></div>
-          <div><h5>
-          Name: </h5><p class="capital">' . $item->item_name . '</p></div>
-          <div>
-          <img class="product-img" src="/uploads/img_' . $item->item_id . ' " alt="' . $item->item_name . '">
-          </div>
-          <div>
-         
-          <a class="button m-0 ms-5 d-flex h-100 align-items-center" id="delete" href="apis/api-delete-item.php?item_id=' . $item->item_id .  ' "> 🗑️
-            </a> </div>
-        </div>';
+                echo '<div class="item">
+                <div> <h5>
+                 ID: </h5><p>' . $item->item_id . '</p></div><div><h5>
+                  Name: </h5><p class="capital">' . $item->item_name . '</p></div><div> 
+                 <img class="product-img" src="/uploads/img_' . $item->item_id . ' " alt="' . $item->item_name . '"></div> <div>
+                  <a class="button m-0 ms-5 d-flex h-100 align-items-center" id="delete" href="apis/api-delete-item.php?item_id=' . $item->item_id .  ' "> 🗑️
+                </a> </div></div>';
             }
             ?>
 

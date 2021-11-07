@@ -13,6 +13,7 @@ $_title = 'Signup';
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <link rel="stylesheet" href="../styledapp.css">
+  <script src="validator.js"></script>
   <style>
     body {
       background: url(bg.jpg) center center no-repeat;
@@ -44,7 +45,9 @@ $_title = 'Signup';
               </div>
             </form>
           </div>
-          <div class="mt-5" id="feedback"></div>
+          <div class="mt-5" id="feedback">
+            <em id="respons"></em>
+          </div>
         </div>
       </div>
     </div>
@@ -59,8 +62,9 @@ $_title = 'Signup';
       let response = await conn.json()
       console.log(response)
       if (conn.ok) {
-        document.getElementById("feedback").insertAdjacentHTML('afterbegin', `<p>User has been created. You can now login using your new account</p>
-      <a href="login">Go here to login</a>`)
+        _one("#respons").innerHTML = " "
+        _one("#respons").innerHTML = JSON.stringify(response)
+        _one("#respons").innerHTML = JSON.stringify(response2)
       }
     }
   </script>
