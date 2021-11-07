@@ -29,16 +29,16 @@ try {
 
 
     if ($newpass == $confirmpass) {
-        $q2 = $db->prepare('UPDATE users SET user_password = :new_password WHERE forgot_pass_key = :pass_key');
-        $q2->bindValue(':pass_key', $pass_key);
-        $q2->bindValue(':new_password', $newpasshashed);
-        $q2->execute();
-        echo 'Number of rows changed: ' . $q->rowCount();
+        $q = $db->prepare('UPDATE users SET user_password = :new_password WHERE forgot_pass_key = :pass_key');
+        $q->bindValue(':pass_key', $pass_key);
+        $q->bindValue(':new_password', $newpasshashed);
+        $q->execute();
+        echo "Number of rows changed: " . $q->rowCount();
     } else {
-        echo 'Password does not match.';
+        echo "ERROR: Password does not match.";
         exit();
     }
 } catch (PDOException $ex) {
     echo $ex;
-    echo 'No dice! ';
+    echo "No dice! ";
 }

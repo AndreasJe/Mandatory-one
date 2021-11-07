@@ -28,11 +28,11 @@ try {
     $verification_key = $row['forgot_pass_key'];
 
 
-    if (!isset($row['verification_key'])) {
+    if (!isset($row['forgot_pass_key'])) {
         echo 'Verification_Key is not present in Database - Create new user or contact your administrator';
         exit();
     }
-    if (strlen($row['verification_key']) != 32) {
+    if (strlen($row['forgot_pass_key']) != 32) {
         echo "mmm... suspicious (key is not 32 chars)";
         exit();
     }

@@ -38,8 +38,9 @@ $('a#delete').on('click', function(e) {
 
 
             foreach ($items as $item) {
-                echo '<div class="item">
-                <div> <h5>
+
+                // Bad indentation, i know. 
+                echo '<div class="item"><div> <h5>
                  ID: </h5><p>' . $item->item_id . '</p></div><div><h5>
                   Name: </h5><p class="capital">' . $item->item_name . '</p></div><div> 
                  <img class="product-img" src="/uploads/img_' . $item->item_id . ' " alt="' . $item->item_name . '"></div> <div>
