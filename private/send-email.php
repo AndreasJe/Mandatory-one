@@ -58,6 +58,7 @@ try {
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = 'MOBO - Verify your new user';
     $mail->Body    = $_message;
+    $mail->isHTML(true);
     // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
