@@ -10,9 +10,10 @@ $_title = 'Login';
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= $_title ?? 'COMPANY' ?></title>
-  <link rel="stylesheet" href="../styled_app.css">
   <script src="validator.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="../styledapp.css">
   <style>
     body {
       background: url(bg.jpg) center center no-repeat;
@@ -31,17 +32,18 @@ $_title = 'Login';
       <div class="col-12 text-center align-self-center py-5">
         <div class="section pb-5 pt-5 pt-sm-2 text-center">
           <div class="form_container">
-
-            <form action="apis/api-login.php" onsubmit="return false">
+            <form onsubmit="return false">
               <input name="email" type="text" placeholder="Email"><br>
               <input name="password" type="password" placeholder="Password"><br>
 
               <button class="button" onclick="login()">Login</button>
+              <a id="info" href="">Forgot your password?</a>
 
             </form>
           </div>
           <div class="container info">
             <em>Don't have an account? Sign up</em> <a href="signup">here!</a>
+
           </div>
         </div>
       </div>

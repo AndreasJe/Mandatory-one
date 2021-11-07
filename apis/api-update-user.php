@@ -29,7 +29,7 @@ try {
     if (password_verify($currentpass, $row['user_password'])) {
         // Check if password is same
         if ($newpass == $confirmpass) {
-            $q2 = $db->prepare('UPDATE users SET user_password = :user_password WHERE user_id = :id');
+            $q2 = $db->prepare('UPDATE users SET user_password = :new_password WHERE user_id = :id');
             $q2->bindValue(':id', $id);
             $q2->bindValue(':new_password', $newpasshashed);
             $q2->execute();

@@ -30,6 +30,27 @@ require_once('components/header.php');
     </div>
 
 
+    <div class="form_container">
+        <div class="form_title">
+            <h2>Change your profile pic</h2>
+        </div>
+
+
+        <form id="form_update_picture" onsubmit="return false">
+            <input class="custom-file-input" placeholder="Image of item" type="file" name="image"><br>
+            <div>
+                <button onclick="updatePhoto()" name="image">Update</button>
+
+            </div>
+        </form>
+        <div id="feedback2" class="container info">
+            <em class="text-center">Click the button to confirm the change</em>
+        </div>
+    </div>
+
+
+
+
 </main>
 
 
@@ -49,8 +70,16 @@ require_once('components/header.php');
             _one("#feedback").innerHTML = "User information has been updated. <br> You can now use the new password"
         }
 
+
+    }
+    async function updatePhoto() {
+        _one("#feedback2").innerHTML = " "
+        _one("#feedback2").innerHTML = "Photo has been uploaded"
+
     }
 </script>
+
+
 
 <?php
 require_once('components/footer.php');
