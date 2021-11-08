@@ -9,44 +9,79 @@ require_once('components/header.php');
 ?>
 
 <main>
-    <div class="form_container">
-        <div class="form_title">
-            <h2>Change password</h2>
-        </div>
+
+    <div class="row">
+
+        <div class="col-12  col-xxl-4  d-flex justify-content-center  mt-4">
+
+            <div class="form_container">
+                <div class="form_title">
+                    <h2>Change your information</h2>
+                </div>
 
 
-        <form id="form_update_user" onsubmit="return false">
-            <input type="password" name="current_password" placeholder="Current password ">
-            <input type="password" name="new_password" placeholder="New password ">
-            <input type="password" name="confirm_password" placeholder="Confirm password">
-            <div>
-                <button onclick="update()" name="user_dlt">Update</button>
+                <form id="form_update_picture" onsubmit="return false">
+                    <input type="text" name="name">
+                    <input type="email" name="email">
+                    <div>
+                        <button onclick="updateInfo()" name="image">Update</button>
 
+                    </div>
+                </form>
+                <div id="feedback2" class="container info">
+                    <em class="text-center">Click the button to confirm the change</em>
+                </div>
             </div>
-        </form>
-        <div id="feedback" class="container info">
-            <em class="text-center">Click the button to confirm the change</em>
         </div>
+        <div class="col-12  col-xxl-4  d-flex justify-content-center  mt-4">
+
+            <div class="form_container">
+                <div class="form_title">
+                    <h2>Change password</h2>
+                </div>
+
+
+                <form id="form_update_user" onsubmit="return false">
+                    <input type="password" name="current_password" placeholder="Current password ">
+                    <input type="password" name="new_password" placeholder="New password ">
+                    <input type="password" name="confirm_password" placeholder="Confirm password">
+                    <div>
+                        <button onclick="update()" name="user_dlt">Update</button>
+
+                    </div>
+                </form>
+                <div id="feedback" class="container info">
+                    <em class="text-center">Click the button to confirm the change</em>
+                </div>
+            </div>
+        </div>
+        <div class="col-12  col-xxl-4  d-flex justify-content-center  mt-4">
+
+            <div class="form_container">
+                <div class="form_title">
+                    <h2>Change your profile pic</h2>
+                </div>
+
+
+                <form id="form_update_picture" onsubmit="return false">
+                    <input class="custom-file-input" placeholder="Select a recent image" type="file" name="image"><br>
+                    <div>
+                        <button onclick="updatePhoto()" name="image">Update</button>
+
+                    </div>
+                </form>
+                <div id="feedback2" class="container info">
+                    <em class="text-center">Click the button to confirm the change</em>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
 
-    <div class="form_container">
-        <div class="form_title">
-            <h2>Change your profile pic</h2>
-        </div>
 
 
-        <form id="form_update_picture" onsubmit="return false">
-            <input class="custom-file-input" placeholder="Image of item" type="file" name="image"><br>
-            <div>
-                <button onclick="updatePhoto()" name="image">Update</button>
-
-            </div>
-        </form>
-        <div id="feedback2" class="container info">
-            <em class="text-center">Click the button to confirm the change</em>
-        </div>
-    </div>
 
 
 
@@ -55,28 +90,34 @@ require_once('components/header.php');
 
 
 <script>
-    async function update() {
-        const form = event.target.form
-        console.log(form)
-        let conn = await fetch("apis/api-update-user", {
-            method: "POST",
-            body: new FormData(form)
-        })
+async function update() {
+    const form = event.target.form
+    console.log(form)
+    let conn = await fetch("apis/api-update-user", {
+        method: "POST",
+        body: new FormData(form)
+    })
 
 
-        let res = await conn
-        if (conn.ok) {
-            _one("#feedback").innerHTML = " "
-            _one("#feedback").innerHTML = "User information has been updated. <br> You can now use the new password"
-        }
-
-
+    let res = await conn
+    if (conn.ok) {
+        _one("#feedback").innerHTML = " "
+        _one("#feedback").innerHTML = "User information has been updated. <br> You can now use the new password"
     }
-    async function updatePhoto() {
-        _one("#feedback2").innerHTML = " "
-        _one("#feedback2").innerHTML = "Photo has been uploaded"
 
-    }
+
+}
+async function updatePhoto() {
+    const form = event.target.form
+    console.log(form)
+    let conn = await fetch("apis/api-upload-profilepic", {
+        method: "POST",
+        body: new FormData(form)
+    })
+    _one("#feedback2").innerHTML = " "
+    _one("#feedback2").innerHTML = "Photo has been uploaded"
+
+}
 </script>
 
 

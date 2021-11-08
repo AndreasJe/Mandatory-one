@@ -13,7 +13,7 @@ $_title = 'Signup';
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../styledapp.css">
+    <link rel="stylesheet" href="styledapp.css">
     <script src="validator.js"></script>
     <style>
     body {
@@ -41,7 +41,7 @@ $_title = 'Signup';
 
                             <div class=" d-flex justify-content-evenly">
 
-                                <a class="button" href="login.php">Go Back</a>
+                                <a class="button" href="login">Go Back</a>
                                 <button type="submit" onclick="sign_up()">Signup</button>
                             </div>
                         </form>
@@ -70,5 +70,5 @@ $_title = 'Signup';
     </script>
 
     <?php
-  require_once('components/footer.php');
-  ?>
+    require_once('components/footer.php');
+    ?>

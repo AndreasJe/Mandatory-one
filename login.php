@@ -14,7 +14,7 @@ $_title = 'Login';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../styledapp.css">
+    <link rel="stylesheet" href="styledapp.css">
     <style>
     body {
         background: url(bg.jpg) center center no-repeat;
@@ -38,7 +38,7 @@ $_title = 'Login';
                             <input name="password" type="password" placeholder="Password"><br>
 
                             <button class="button" onclick="login()">Login</button>
-                            <a id="info" href="forgot-password.php">Forgot your password?</a>
+                            <a id="info" href="forgot-password">Forgot your password?</a>
 
                         </form>
                     </div>
@@ -61,7 +61,7 @@ $_title = 'Login';
         })
 
         if (conn.ok) {
-            location.href = "user.php"
+            location.href = "user"
 
 
         }
@@ -69,5 +69,5 @@ $_title = 'Login';
     </script>
 
     <?php
-  require_once('components/footer.php');
-  ?>
+    require_once('components/footer.php');
+    ?>
