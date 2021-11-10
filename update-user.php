@@ -10,25 +10,25 @@ require_once('components/header.php');
 
 <main>
 
-    <div class="row">
+    <div class="row w-100">
 
         <div class="col-12  col-xxl-4  d-flex justify-content-center  mt-4">
 
             <div class="form_container">
                 <div class="form_title">
-                    <h2>Change your information</h2>
+                    <h2>Update information</h2>
                 </div>
 
 
-                <form id="form_update_picture" onsubmit="return false">
-                    <input type="text" name="name">
-                    <input type="email" name="email">
+                <form id="form_update_info" onsubmit="return false">
+                    <input type="text" name="new_name" placeholder="Name">
+                    <input type="email" name="new_email" placeholder="Email">
                     <div>
-                        <button onclick="updateInfo()" name="image">Update</button>
+                        <button onclick="updateInfo()">Update</button>
 
                     </div>
                 </form>
-                <div id="feedback2" class="container info">
+                <div id="feedback3" class="container info">
                     <em class="text-center">Click the button to confirm the change</em>
                 </div>
             </div>
@@ -59,14 +59,14 @@ require_once('components/header.php');
 
             <div class="form_container">
                 <div class="form_title">
-                    <h2>Change your profile pic</h2>
+                    <h2>Change your avatar</h2>
                 </div>
 
 
                 <form id="form_update_picture" onsubmit="return false">
                     <input class="custom-file-input" placeholder="Select a recent image" type="file" name="image"><br>
                     <div>
-                        <button onclick="updatePhoto()" name="image">Update</button>
+                        <button onclick="updatePhoto()">Update</button>
 
                     </div>
                 </form>
@@ -93,7 +93,7 @@ require_once('components/header.php');
 async function update() {
     const form = event.target.form
     console.log(form)
-    let conn = await fetch("apis/api-update-user", {
+    let conn = await fetch("apis/api-change-password", {
         method: "POST",
         body: new FormData(form)
     })
@@ -102,7 +102,7 @@ async function update() {
     let res = await conn
     if (conn.ok) {
         _one("#feedback").innerHTML = " "
-        _one("#feedback").innerHTML = "User information has been updated. <br> You can now use the new password"
+        _one("#feedback").innerHTML = "Password has been changed! <br> Dont forget it!"
     }
 
 
@@ -116,6 +116,17 @@ async function updatePhoto() {
     })
     _one("#feedback2").innerHTML = " "
     _one("#feedback2").innerHTML = "Photo has been uploaded"
+
+}
+async function updateInfo() {
+    const form = event.target.form
+    console.log(form)
+    let conn = await fetch("apis/api-update-info", {
+        method: "POST",
+        body: new FormData(form)
+    })
+    _one("#feedback3").innerHTML = " "
+    _one("#feedback3").innerHTML = "User information has been uploaded"
 
 }
 </script>

@@ -40,8 +40,10 @@ try {
 
     $name =  $row['user_name'];
     $_to_email =  $_POST['email'];
-    $_message = "<h1>Hello $name! </h1> <p>Follow the link to reset your password</p><p> <a href='http://localhost/reset-password.php?key=$verification_key'>Click here to set a new password</a></p>";
-    //$verification_key = bin2hex(random_bytes(16));
+    $_message = file_get_contents('../email-templates/email-reset-password.html');
+    $_subject = "Reset your password";
+    $_message = str_replace("%username%", $name, $_message);
+    $_message = str_replace("%verification_key%", $verification_key, $_message);
 
     require_once("../private/send-email.php");
 

@@ -57,7 +57,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="user.php">Dashboard</a>
-                        <a class="dropdown-item" href="update-user.php">Change Password</a>
+                        <a class="dropdown-item" href="update-user.php"> Your Account</a>
                         <a class="dropdown-item" href="logout.php">Log Out</a>
                     </div>
                 </li>

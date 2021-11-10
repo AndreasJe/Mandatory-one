@@ -57,12 +57,19 @@ try {
   $response = ["info" => "user created", "user_id" => intval($user_id), "Verification" => "Verification Email has been sent"];
   echo json_encode($response);
 
-  $name =  $_POST['name'];
+
+
+  $name =  $row['user_name'];
   $_to_email =  $_POST['email'];
-  $_message = "<h1>Hello $name! </h1> <p>Thank you for signing up!</p><p> <a href='http://localhost/apis/api-validate-user.php?key=$verification_key'>Click here to verify your account</a></p>";
-  //$verification_key = bin2hex(random_bytes(16));
+  $_message = file_get_contents('../email-templates/email-verify-password.html');
+
+  $_subject = "Verify your user";
+  $_message = str_replace('%username%', $name, $message);
+  $_message = str_replace('%verification_key%', $verification_key, $message);
 
   require_once("../private/send-email.php");
+
+  exit();
 } catch (Exception $ex) {
   http_response_code(500);
   $response2 = 'Email is already used by another user';

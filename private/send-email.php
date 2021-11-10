@@ -43,7 +43,7 @@ try {
     $mail->Port       = 587;                                   // TCP port to connect to
 
     //Recipients
-    $mail->setFrom('dr@dr.dk', 'Midgetporn.com');
+    $mail->setFrom('PeterMadsen@single.dk', 'MOBO');
     $mail->addAddress($_to_email, $_POST['name']);     // Add a recipient
     // $mail->addAddress('ellen@example.com');               // Name is optional
     // $mail->addReplyTo('DUMMY_EMAIL_HERE_XXXXXXXXXXXXXXXXXX', 'Information');
@@ -56,7 +56,7 @@ try {
 
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'MOBO - Verify your new user';
+    $mail->Subject = $_subject;
     $mail->Body    = $_message;
     $mail->isHTML(true);
     // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';

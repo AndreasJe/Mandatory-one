@@ -1,5 +1,5 @@
 <?php
-require_once("globals.php");
+require_once(__DIR__ . "globals.php");
 
 //Initial validation of the parameter
 if (!isset($_GET['key'])) {
