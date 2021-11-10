@@ -59,13 +59,13 @@ try {
 
 
 
-  $name =  $row['user_name'];
+  $name =  $_POST['name'];
   $_to_email =  $_POST['email'];
-  $_message = file_get_contents('../email-templates/email-verify-password.html');
+  $_message = file_get_contents('../email-templates/email-validate-user.html');
 
   $_subject = "Verify your user";
-  $_message = str_replace('%username%', $name, $message);
-  $_message = str_replace('%verification_key%', $verification_key, $message);
+  $_message = str_replace('%username%', $name, $_message);
+  $_message = str_replace('%verification_key%', $verification_key, $_message);
 
   require_once("../private/send-email.php");
 
@@ -83,6 +83,6 @@ function send_400($error_message)
   header('Content-Type: application/json');
   http_response_code(400);
   $response = ["info" => $error_message];
-  echo json_encode($response);
+  echo $response;
   exit();
 }

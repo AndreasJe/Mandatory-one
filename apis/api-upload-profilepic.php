@@ -18,7 +18,7 @@ if (isset($_FILES["image"]) && !empty($_FILES["image"]["name"])) {
         echo "Photo has been uploaded";
 
         //Redirection to force refresh
-        header("../update-user");
+        header('Location: ../update-user');
         exit();
     }
 }

@@ -114,8 +114,7 @@ async function updatePhoto() {
         method: "POST",
         body: new FormData(form)
     })
-    _one("#feedback2").innerHTML = " "
-    _one("#feedback2").innerHTML = "Photo has been uploaded"
+    location.reload();
 
 }
 async function updateInfo() {
@@ -126,8 +125,7 @@ async function updateInfo() {
         body: new FormData(form)
     })
     _one("#feedback3").innerHTML = " "
-    _one("#feedback3").innerHTML = "User information has been uploaded"
-
+    _one("#feedback3").innerHTML = "User information has been updated"
 }
 </script>
 

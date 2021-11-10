@@ -45,7 +45,8 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                        <?php if (isset($_SESSION['user_name'])) { ?>
+                        <?php
+                        if (file_exists('uploads/profilepics/img_' . $_SESSION['user_id'])) { ?>
                         <img class="user_img rounded-circle" src="uploads/profilepics/img_<?= $_SESSION['user_id'] ?>"
                             width="40" height="40">
                         <?php } else { ?>
