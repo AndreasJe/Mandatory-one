@@ -3,6 +3,19 @@
 
 require_once('globals.php');
 
+
+// Validate email
+if (!isset($_POST['email'])) {
+  send_400('email is required');
+  $error = "We need your email to create a user for you! Please enter your email in the form";
+  exit();
+}
+if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+  send_400('email is invalid');
+  $error = "We need a valid email to verify your user. Please enter your email correctly in the form";
+  exit();
+}
+
 try {
   $db = _db();
 } catch (Exception $ex) {
@@ -23,7 +36,6 @@ try {
     // Verify password input string with hashed password in database row.
     if (password_verify($_POST['password'], $row['user_password'])) {
 
-      http_response_code(200);
       //Start SESSION and assign values from database
       session_start();
       $_SESSION['user_verified'] = $row['verified'];
@@ -31,6 +43,7 @@ try {
       $_SESSION['user_password'] = $row['user_password'];
       $_SESSION['user_name'] = $row['user_name'];
       $_SESSION['user_id'] = $row['user_id'];
+      http_response_code(200);
     } else {
       echo "ERROR: Password is not valid";
     }
